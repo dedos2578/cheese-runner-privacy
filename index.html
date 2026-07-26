@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Política de Privacidad — Cheese Runner</title>
+    <style>
+        :root {
+            --color-bg: #fafaf7;
+            --color-text: #2d2d2d;
+            --color-heading: #1a1a1a;
+            --color-accent: #d4a017;
+            --color-border: #e0dcd0;
+            --color-link: #b8860b;
+            --color-table-bg: #f5f3eb;
+            --color-table-header: #d4a017;
+            --font-body: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            --font-heading: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--color-text);
+            background-color: var(--color-bg);
+            line-height: 1.7;
+            padding: 0;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #d4a017 0%, #f0c040 100%);
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-family: var(--font-heading);
+            color: white;
+            font-size: 2rem;
+            margin-bottom: 0.25rem;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.15);
+        }
+
+        .header .subtitle {
+            color: rgba(255,255,255,0.9);
+            font-size: 0.95rem;
+        }
+
+        .lang-switch {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .lang-switch a {
+            background: rgba(255,255,255,0.25);
+            color: white;
+            text-decoration: none;
+            padding: 0.35rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+
+        .lang-switch a:hover,
+        .lang-switch a.active {
+            background: rgba(255,255,255,0.5);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        .meta {
+            background: var(--color-table-bg);
+            border-left: 4px solid var(--color-accent);
+            padding: 1rem 1.25rem;
+            margin-bottom: 2rem;
+            border-radius: 0 6px 6px 0;
+        }
+
+        .meta p {
+            margin: 0.25rem 0;
+            font-size: 0.9rem;
+        }
+
+        .meta strong {
+            color: var(--color-heading);
+        }
+
+        h2 {
+            font-family: var(--font-heading);
+            color: var(--color-heading);
+            font-size: 1.45rem;
+            margin-top: 2.5rem;
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.3rem;
+            border-bottom: 2px solid var(--color-accent);
+        }
+
+        h3 {
+            font-family: var(--font-heading);
+            color: var(--color-heading);
+            font-size: 1.15rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        p {
+            margin-bottom: 0.75rem;
+        }
+
+        strong {
+            color: var(--color-heading);
+        }
+
+        a {
+            color: var(--color-link);
+            text-decoration: underline;
+        }
+
+        a:hover {
+            color: var(--color-accent);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+        }
+
+        th {
+            background-color: var(--color-table-header);
+            color: white;
+            padding: 0.65rem 0.75rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 0.55rem 0.75rem;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        tr:nth-child(even) td {
+            background-color: var(--color-table-bg);
+        }
+
+        ul {
+            margin: 0.5rem 0 0.75rem 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.3rem;
+        }
+
+        .highlight-box {
+            background: #fffbe6;
+            border: 1px solid #f0d060;
+            border-radius: 6px;
+            padding: 0.75rem 1rem;
+            margin: 1rem 0;
+            font-size: 0.92rem;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-top: 3rem;
+            border-top: 1px solid var(--color-border);
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        /* English section hidden by default */
+        #english-section {
+            display: none;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 1.25rem 1rem;
+            }
+
+            h2 {
+                font-size: 1.25rem;
+            }
+
+            table {
+                font-size: 0.82rem;
+            }
+
+            th, td {
+                padding: 0.45rem 0.5rem;
+            }
+        }
+    </style>
+    <script>
+        function showLang(lang) {
+            var esSection = document.getElementById('spanish-section');
+            var enSection = document.getElementById('english-section');
+            var links = document.querySelectorAll('.lang-switch a');
+
+            links.forEach(function(a) { a.classList.remove('active'); });
+
+            if (lang === 'es') {
+                esSection.style.display = 'block';
+                enSection.style.display = 'none';
+                links[0].classList.add('active');
+            } else {
+                esSection.style.display = 'none';
+                enSection.style.display = 'block';
+                links[1].classList.add('active');
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="header">
+    <h1>&#x1F9C0; Cheese Runner</h1>
+    <p class="subtitle">Política de Privacidad / Privacy Policy</p>
+    <div class="lang-switch">
+        <a href="#" class="active" onclick="showLang('es'); return false;">Español</a>
+        <a href="#" onclick="showLang('en'); return false;">English</a>
+    </div>
+</div>
+
+<!-- ===================== SPANISH ===================== -->
+<div id="spanish-section" class="container">
+
+<div class="meta">
+        <p><strong>Última actualización:</strong> 25 de julio de 2026</p>
+    <p><strong>Nombre de la aplicación:</strong> Cheese Runner</p>
+    <p><strong>Identificador del paquete:</strong> com.genia.cheeserunner</p>
+    <p><strong>Plataforma:</strong> Android</p>
+    <p><strong>Motor del juego:</strong> Godot 4.6.2</p>
+</div>
+
+<h2>1. Responsable del tratamiento</h2>
+<p>El responsable del tratamiento de los datos personales en relación con esta aplicación es:</p>
+<p><strong>Genia</strong><br>
+Correo electrónico: <a href="mailto:diegodelgado2578@gmail.com">diegodelgado2578@gmail.com</a><br>
+Sitio web: <a href="https://genia.dev">https://genia.dev</a></p>
+<p>Si tiene alguna pregunta sobre esta política de privacidad o el tratamiento de sus datos, puede contactarnos en la dirección de correo electrónico indicada anteriormente.</p>
+
+<h2>2. Datos que recogemos</h2>
+<p>Cheese Runner es un juego casual para dispositivos móviles que <strong>no recopila datos personales</strong>. La aplicación funciona completamente de forma local en su dispositivo y no requiere conexión a Internet ni cuenta de usuario.</p>
+
+<h3>2.1 Datos almacenados localmente</h3>
+<p>La aplicación almacena exclusivamente datos de progreso y preferencias del juego en su dispositivo, en el archivo local <code>user://save.cfg</code>. Estos datos incluyen:</p>
+
+<table>
+<thead><tr><th>Categoría</th><th>Datos almacenados</th><th>Finalidad</th></tr></thead>
+<tbody>
+<tr><td>Preferencias de idioma</td><td>Código de idioma seleccionado (es/en/pt)</td><td>Mostrar la interfaz en el idioma elegido</td></tr>
+<tr><td>Configuración de audio</td><td>Nivel de volumen y estado de silenciamiento por bus (Master, SFX, Música)</td><td>Recordar las preferencias de sonido del jugador</td></tr>
+<tr><td>Vibración</td><td>Preferencia de vibración activada/desactivada</td><td>Recordar si el jugador quiere vibración háptica</td></tr>
+<tr><td>Progreso del juego</td><td>Niveles desbloqueados, estrellas obtenidas (1–3), mejores tiempos por nivel</td><td>Guardar el avance del jugador</td></tr>
+<tr><td>Modo infinito</td><td>Mejor ronda y mejor puntuación alcanzadas</td><td>Registrar récords del modo infinito</td></tr>
+<tr><td>Skins (aspectos)</td><td>Skin seleccionada, skins adquiridas</td><td>Recordar la personalización del personaje</td></tr>
+<tr><td>Logros</td><td>Identificadores de logros desbloqueados</td><td>Rastrear el progreso de los logros</td></tr>
+<tr><td>Contadores de estadísticas</td><td>Contadores vitales de juego (ej.: celdas excavadas, gatos esquivados)</td><td>Desbloquear logros basados en estadísticas</td></tr>
+<tr><td>Función de compartir</td><td>Marca temporal de última compartición, recompensa pendiente</td><td>Gestionar el enfriamiento de 24h de la función de compartir</td></tr>
+<tr><td>Marcas de introducción</td><td>Intros de mundo ya visualizadas</td><td>Evitar repetir vídeos introductorios ya vistos</td></tr>
+</tbody>
+</table>
+
+<div class="highlight-box">
+<strong>Ninguno de estos datos constituye información personal identificable.</strong> Son exclusivamente datos técnicos de juego almacenados en su dispositivo.
+</div>
+
+<h3>2.2 Datos que NO recogemos</h3>
+<p>Cheese Runner <strong>NO recopila, almacena ni transmite</strong>:</p>
+<ul>
+<li>Nombre, dirección de correo electrónico o datos de contacto</li>
+<li>Identificadores de dispositivo (IMEI, ID de publicidad, Android ID)</li>
+<li>Dirección IP o datos de geolocalización</li>
+<li>Información de cuenta o de inicio de sesión</li>
+<li>Datos de pago o financieros</li>
+<li>Datos de uso o analíticas</li>
+<li>Datos de navegación o comportamiento</li>
+<li>Fotografías, archivos multimedia o acceso al almacenamiento</li>
+<li>Contactos, mensajes o registros de llamadas</li>
+<li>Datos biométricos o de salud</li>
+</ul>
+
+<h2>3. Uso de los datos</h2>
+<p>Los datos locales de juego descritos en la sección 2.1 se utilizan exclusivamente para:</p>
+<ul>
+<li><strong>Funcionamiento del juego:</strong> Permitir que el juego recuerde su progreso entre sesiones.</li>
+<li><strong>Personalización:</strong> Recordar sus preferencias de idioma, audio, vibración y aspecto del personaje.</li>
+<li><strong>Función de compartir:</strong> Permitirle compartir sus logros de juego a través de la función de compartir nativa de Android. Al usar esta función, usted elige voluntariamente compartir texto generado por la aplicación (por ejemplo: «¡Completé el nivel 1-1 con ★★☆!») a través de las aplicaciones instaladas en su dispositivo. Nosotros no recibimos ni almacenamos ningún dato como resultado de esta acción.</li>
+</ul>
+<div class="highlight-box">
+<strong>No utilizamos los datos para publicidad, perfilamiento, ni ningún otro propósito más allá del funcionamiento del juego.</strong>
+</div>
+
+<h2>4. Almacenamiento y retención de datos</h2>
+
+<h3>4.1 Almacenamiento local</h3>
+<p>Todos los datos se almacenan exclusivamente en el dispositivo del usuario, dentro del espacio de almacenamiento privado de la aplicación (<code>user://save.cfg</code>). Este archivo no es accesible para otras aplicaciones en dispositivos no rooteados.</p>
+
+<h3>4.2 Sin almacenamiento en servidores</h3>
+<p>Cheese Runner <strong>no tiene servidor backend</strong>. Ningún dato sale jamás de su dispositivo. La aplicación no transmite datos a servidores externos, bases de datos en la nube ni servicios de terceros.</p>
+
+<h3>4.3 Retención</h3>
+<p>Los datos se conservan en su dispositivo mientras la aplicación esté instalada. Si desinstala la aplicación, todos los datos almacenados localmente se eliminan permanentemente. No conservamos copias de sus datos ya que nunca salieron de su dispositivo.</p>
+
+<h3>4.4 Copia de seguridad</h3>
+<p>La aplicación crea automáticamente una copia de seguridad local (<code>save.cfg.bak</code>) como mecanismo de recuperación ante corrupción de datos. Esta copia también se almacena exclusivamente en su dispositivo y se elimina al desinstalar la aplicación.</p>
+
+<h2>5. Compartición con terceros</h2>
+
+<h3>5.1 No vendemos ni compartimos datos</h3>
+<p>Cheese Runner <strong>no vende, alquila, comparte ni transmite</strong> datos personales a terceros, porque no recopila datos personales.</p>
+
+<h3>5.2 Servicios de terceros integrados</h3>
+<p>La aplicación no integra servicios de analíticas (como Google Analytics, Firebase), SDKs de publicidad (como AdMob), ni redes publicitarias.</p>
+
+<h3>5.3 Función de compartir del sistema</h3>
+<p>La aplicación ofrece una función de compartir que utiliza la funcionalidad nativa de Android (intent de compartir). Al usarla:</p>
+<ul>
+<li>Se copia texto generado por la aplicación al portapapeles del sistema.</li>
+<li>Se abre una URL de intención de Twitter/X en el navegador o aplicación del sistema.</li>
+</ul>
+<p>En ambos casos, <strong>usted controla la acción</strong> y puede elegir no compartir. Nosotros no recibimos ninguna información como resultado de estas acciones. Las políticas de privacidad de las aplicaciones que elija para compartir (por ejemplo, la política de Twitter/X) se aplican a los datos que usted envía voluntariamente a través de esas plataformas.</p>
+
+<h3>5.4 Servicios del sistema operativo</h3>
+<p>El juego se distribuye a través de Google Play Store. Los servicios de Google Play pueden recopilar datos propios según sus políticas de privacidad, independientemente de nuestra aplicación. Consulte la <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Política de Privacidad de Google</a> para más información.</p>
+
+<h2>6. Permisos de la aplicación</h2>
+<p>Cheese Runner solicita únicamente el permiso estrictamente necesario:</p>
+
+<table>
+<thead><tr><th>Permiso</th><th>Uso</th><th>Necesario</th></tr></thead>
+<tbody>
+<tr><td><code>android.permission.VIBRATE</code></td><td>Vibración háptica durante el juego (puede desactivarse en ajustes)</td><td>Sí</td></tr>
+</tbody>
+</table>
+
+<p><strong>No solicitamos permisos</strong> de acceso a Internet, cámara, micrófono, contactos, almacenamiento, ubicación, ni ningún otro permiso sensible.</p>
+
+<h2>7. Privacidad de menores</h2>
+<p>Cheese Runner es un juego casual dirigido a un público general. No está específicamente dirigido a menores de 16 años, pero puede ser utilizado por personas de cualquier edad.</p>
+<ul>
+<li><strong>No recopilamos datos personales de menores</strong> ni de ningún usuario.</li>
+<li><strong>No requerimos verificación de edad</strong> ya que no hay cuentas ni registro.</li>
+<li><strong>No mostramos publicidad dirigida</strong> ni contenido inapropiado.</li>
+<li>Cumplimos con los principios del Reglamento General de Protección de Datos (RGPD) y la ley COPPA respecto a la no recopilación de datos personales de menores.</li>
+</ul>
+<p>Si es padre o tutor y tiene preocupaciones sobre el uso de esta aplicación por parte de un menor, puede estar tranquilo sabiendo que la aplicación no recopila ni transmite información personal alguna.</p>
+
+<h2>8. Sus derechos (RGPD y CCPA)</h2>
+
+<h3>8.1 Derechos bajo el RGPD (Reglamento General de Protección de Datos)</h3>
+<p>Si reside en el Espacio Económico Europeo (EEE) o en el Reino Unido, tiene los siguientes derechos:</p>
+<ul>
+<li><strong>Derecho de acceso (Art. 15 RGPD):</strong> Puede acceder a todos sus datos de juego en cualquier momento navegando a los ajustes y pantallas de progreso dentro de la aplicación.</li>
+<li><strong>Derecho de rectificación (Art. 16 RGPD):</strong> Puede modificar sus preferencias (idioma, audio, vibración) directamente desde los ajustes de la aplicación.</li>
+<li><strong>Derecho de supresión (Art. 17 RGPD):</strong> Puede eliminar todos sus datos desinstalando la aplicación o borrando los datos de la aplicación desde los ajustes de Android (Ajustes → Aplicaciones → Cheese Runner → Borrar datos).</li>
+<li><strong>Derecho a la portabilidad (Art. 20 RGPD):</strong> Puede exportar el archivo <code>save.cfg</code> copiándolo desde el directorio de datos de la aplicación si su dispositivo lo permite.</li>
+<li><strong>Derecho de oposición (Art. 21 RGPD):</strong> Dado que no realizamos tratamiento de datos personales, este derecho no es aplicable en la práctica.</li>
+<li><strong>Derecho a retirar el consentimiento:</strong> No se requiere consentimiento ya que no tratamos datos personales.</li>
+</ul>
+<p><strong>Base legal del tratamiento (Art. 6 RGPD):</strong> El tratamiento de los datos locales de juego se basa en el interés legítimo del responsable (Art. 6.1.f) para proporcionar la funcionalidad esencial del juego, y en la ejecución del contrato de prestación del servicio (Art. 6.1.b) al guardar el progreso del juego.</p>
+
+<h3>8.2 Derechos bajo la CCPA (Ley de Privacidad del Consumidor de California)</h3>
+<p>Si reside en California, tiene los siguientes derechos conforme a la CCPA:</p>
+<ul>
+<li><strong>Derecho a saber:</strong> Esta sección constituye nuestra notificación de las categorías de datos recopilados. Como se detalla arriba, no recopilamos información personal identificable.</li>
+<li><strong>Derecho a eliminar:</strong> Puede eliminar sus datos en cualquier momento desinstalando la aplicación o borrando los datos desde los ajustes de Android.</li>
+<li><strong>Derecho a excluirse de la venta:</strong> <strong>No vendemos información personal.</strong> Este derecho no es aplicable ya que nunca hemos vendido ni venderemos datos personales.</li>
+<li><strong>Derecho a la no discriminación:</strong> No discriminamos a ningún usuario por ejercer sus derechos de privacidad.</li>
+</ul>
+
+<p><strong>Categorías de información personal recopiladas en los últimos 12 meses (CCPA §1798.100):</strong></p>
+
+<table>
+<thead><tr><th>Categoría</th><th>Recopilada</th><th>Compartida</th><th>Vendida</th></tr></thead>
+<tbody>
+<tr><td>Identificadores</td><td>No</td><td>No</td><td>No</td></tr>
+<tr><td>Datos comerciales</td><td>No</td><td>No</td><td>No</td></tr>
+<tr><td>Datos financieros</td><td>No</td><td>No</td><td>No</td></tr>
+<tr><td>Datos de Internet u otra actividad de red</td><td>No</td><td>No</td><td>No</td></tr>
+<tr><td>Datos geolocalizados</td><td>No</td><td>No</td><td>No</td></tr>
+<tr><td>Datos profesionales</td><td>No</td><td>No</td><td>No</td></tr>
+<tr><td>Datos de educación</td><td>No</td><td>No</td><td>No</td></tr>
+<tr><td>Inferencias derivadas</td><td>No</td><td>No</td><td>No</td></tr>
+<tr><td>Datos biométricos</td><td>No</td><td>No</td><td>No</td></tr>
+<tr><td>Datos de menores de 16 años</td><td>No</td><td>No</td><td>No</td></tr>
+</tbody>
+</table>
+
+<h2>9. Seguridad</h2>
+<p>Aunque Cheese Runner no recopila datos personales, tomamos medidas para proteger los datos de juego almacenados en su dispositivo:</p>
+<ul>
+<li>Los datos se almacenan en el espacio privado de la aplicación de Android, que no es accesible para otras aplicaciones (en dispositivos no rooteados).</li>
+<li>Se mantiene una copia de seguridad local automática para prevenir la pérdida de datos por corrupción del archivo de guardado.</li>
+<li>No se transmite ningún dato a través de Internet, eliminando riesgos de interceptación.</li>
+</ul>
+
+<h2>10. Cambios en esta política</h2>
+<p>Podemos actualizar esta política de privacidad de forma periódica. Cualquier cambio será reflejado en la fecha de «Última actualización» al inicio del documento. Si realizamos cambios sustanciales, los notificaremos a través de la actualización de la aplicación en Google Play Store.</p>
+<p>Le recomendamos revisar esta política periódicamente para estar informado sobre cómo protegemos su información.</p>
+
+<h2>11. Contacto</h2>
+<p>Si tiene preguntas, comentarios o preocupaciones sobre esta política de privacidad o el tratamiento de sus datos, puede contactarnos en:</p>
+<p><strong>Correo electrónico:</strong> <a href="mailto:diegodelgado2578@gmail.com">diegodelgado2578@gmail.com</a><br>
+<strong>Formulario de contacto en Google Play:</strong> Disponible en la ficha de la aplicación en Google Play Store</p>
+<p>Para ejercer sus derechos de privacidad (acceso, supresión, rectificación), puede:</p>
+<ol>
+<li>Gestionar sus datos directamente desde la aplicación (ajustes, progreso).</li>
+<li>Borrar todos sus datos desde los ajustes de Android: <strong>Ajustes → Aplicaciones → Cheese Runner → Borrar datos</strong>.</li>
+<li>Contactarnos por correo electrónico para cualquier consulta adicional.</li>
+</ol>
+<p>Intentaremos responder a cualquier solicitud dentro de los plazos establecidos por la legislación aplicable (30 días según el RGPD, 45 días según la CCPA).</p>
+
+</div>
+
+<!-- ===================== ENGLISH ===================== -->
+<div id="english-section" class="container">
+
+<div class="meta">
+        <p><strong>Last updated:</strong> July 25, 2026</p>
+    <p><strong>Application name:</strong> Cheese Runner</p>
+    <p><strong>Package identifier:</strong> com.genia.cheeserunner</p>
+    <p><strong>Platform:</strong> Android</p>
+    <p><strong>Game engine:</strong> Godot 4.6.2</p>
+</div>
+
+<h2>1. Data Controller</h2>
+<p>The data controller for personal data processing in relation to this application is:</p>
+<p><strong>Genia</strong><br>
+Email: <a href="mailto:diegodelgado2578@gmail.com">diegodelgado2578@gmail.com</a><br>
+Website: <a href="https://genia.dev">https://genia.dev</a></p>
+<p>If you have any questions about this privacy policy or how your data is handled, you can contact us at the email address above.</p>
+
+<h2>2. Data We Collect</h2>
+<p>Cheese Runner is a casual mobile game that <strong>does not collect personal data</strong>. The application runs entirely locally on your device and does not require an internet connection or user account.</p>
+
+<h3>2.1 Locally stored data</h3>
+<p>The application stores only game progress and preference data on your device, in the local file <code>user://save.cfg</code>. This data includes:</p>
+
+<table>
+<thead><tr><th>Category</th><th>Data stored</th><th>Purpose</th></tr></thead>
+<tbody>
+<tr><td>Language preference</td><td>Selected language code (es/en/pt)</td><td>Display the interface in the chosen language</td></tr>
+<tr><td>Audio settings</td><td>Volume level and mute state per bus (Master, SFX, Music)</td><td>Remember the player's sound preferences</td></tr>
+<tr><td>Vibration</td><td>Vibration preference on/off</td><td>Remember whether the player wants haptic feedback</td></tr>
+<tr><td>Game progress</td><td>Unlocked levels, stars earned (1–3), best times per level</td><td>Save the player's advancement</td></tr>
+<tr><td>Endless mode</td><td>Best round and best score achieved</td><td>Record endless mode high scores</td></tr>
+<tr><td>Skins (outfits)</td><td>Selected skin, purchased skins</td><td>Remember character customization</td></tr>
+<tr><td>Achievements</td><td>Unlocked achievement identifiers</td><td>Track achievement progress</td></tr>
+<tr><td>Statistics counters</td><td>Lifetime game stats (e.g., cells dug, cats dodged)</td><td>Unlock stat-based achievements</td></tr>
+<tr><td>Share feature</td><td>Last share timestamp, pending reward</td><td>Manage the 24h share cooldown</td></tr>
+<tr><td>Intro flags</td><td>World intros already viewed</td><td>Avoid repeating introductory videos</td></tr>
+</tbody>
+</table>
+
+<div class="highlight-box">
+<strong>None of this data constitutes personally identifiable information.</strong> It is exclusively technical game data stored on your device.
+</div>
+
+<h3>2.2 Data we do NOT collect</h3>
+<p>Cheese Runner <strong>does not collect, store, or transmit</strong>:</p>
+<ul>
+<li>Name, email address, or contact information</li>
+<li>Device identifiers (IMEI, advertising ID, Android ID)</li>
+<li>IP address or geolocation data</li>
+<li>Account or login information</li>
+<li>Payment or financial data</li>
+<li>Usage or analytics data</li>
+<li>Browsing or behavioral data</li>
+<li>Photos, media files, or storage access</li>
+<li>Contacts, messages, or call logs</li>
+<li>Biometric or health data</li>
+</ul>
+
+<h2>3. Use of Data</h2>
+<p>The local game data described in section 2.1 is used exclusively for:</p>
+<ul>
+<li><strong>Game functionality:</strong> Allowing the game to remember your progress between sessions.</li>
+<li><strong>Personalization:</strong> Remembering your language, audio, vibration, and character skin preferences.</li>
+<li><strong>Share feature:</strong> Allowing you to share your game achievements through Android's native share functionality. When you use this feature, you voluntarily choose to share app-generated text (e.g., "I completed level 1-1 with ★★☆!") through apps installed on your device. We do not receive or store any data as a result of this action.</li>
+</ul>
+<div class="highlight-box">
+<strong>We do not use data for advertising, profiling, or any purpose beyond game functionality.</strong>
+</div>
+
+<h2>4. Data Storage and Retention</h2>
+
+<h3>4.1 Local storage</h3>
+<p>All data is stored exclusively on the user's device, within the application's private storage space (<code>user://save.cfg</code>). This file is not accessible to other applications on non-rooted devices.</p>
+
+<h3>4.2 No server storage</h3>
+<p>Cheese Runner <strong>has no backend server</strong>. No data ever leaves your device. The application does not transmit data to external servers, cloud databases, or third-party services.</p>
+
+<h3>4.3 Retention</h3>
+<p>Data is retained on your device as long as the application is installed. If you uninstall the application, all locally stored data is permanently deleted. We do not retain copies of your data since it never left your device.</p>
+
+<h3>4.4 Backup</h3>
+<p>The application automatically creates a local backup (<code>save.cfg.bak</code>) as a recovery mechanism against data corruption. This backup is also stored exclusively on your device and is deleted when the application is uninstalled.</p>
+
+<h2>5. Sharing with Third Parties</h2>
+
+<h3>5.1 We do not sell or share data</h3>
+<p>Cheese Runner <strong>does not sell, rent, share, or transmit</strong> personal data to third parties, because it does not collect personal data.</p>
+
+<h3>5.2 Integrated third-party services</h3>
+<p>The application does not integrate analytics services (such as Google Analytics, Firebase), advertising SDKs (such as AdMob), or advertising networks.</p>
+
+<h3>5.3 System share functionality</h3>
+<p>The application offers a share feature that uses Android's native share functionality (share intent). When using it:</p>
+<ul>
+<li>App-generated text is copied to the system clipboard.</li>
+<li>A Twitter/X intent URL is opened in the browser or system app.</li>
+</ul>
+<p>In both cases, <strong>you control the action</strong> and can choose not to share. We do not receive any information as a result of these actions. The privacy policies of the apps you choose to share with (e.g., Twitter/X's policy) apply to the data you voluntarily send through those platforms.</p>
+
+<h3>5.4 Operating system services</h3>
+<p>The game is distributed through Google Play Store. Google Play services may collect their own data according to their privacy policies, independently of our application. See <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a> for more information.</p>
+
+<h2>6. Application Permissions</h2>
+<p>Cheese Runner requests only the strictly necessary permission:</p>
+
+<table>
+<thead><tr><th>Permission</th><th>Use</th><th>Required</th></tr></thead>
+<tbody>
+<tr><td><code>android.permission.VIBRATE</code></td><td>Haptic vibration during gameplay (can be disabled in settings)</td><td>Yes</td></tr>
+</tbody>
+</table>
+
+<p><strong>We do not request permissions</strong> for internet access, camera, microphone, contacts, storage, location, or any other sensitive permissions.</p>
+
+<h2>7. Children's Privacy</h2>
+<p>Cheese Runner is a casual game intended for a general audience. It is not specifically directed at children under 16, but it may be used by individuals of any age.</p>
+<ul>
+<li><strong>We do not collect personal data from children</strong> or any user.</li>
+<li><strong>We do not require age verification</strong> as there are no accounts or registration.</li>
+<li><strong>We do not display targeted advertising</strong> or inappropriate content.</li>
+<li>We comply with the principles of the General Data Protection Regulation (GDPR) and COPPA regarding the non-collection of personal data from children.</li>
+</ul>
+<p>If you are a parent or guardian and have concerns about a minor using this application, you can be assured that the application does not collect or transmit any personal information.</p>
+
+<h2>8. Your Rights (GDPR and CCPA)</h2>
+
+<h3>8.1 Rights under the GDPR (General Data Protection Regulation)</h3>
+<p>If you reside in the European Economic Area (EEA) or the United Kingdom, you have the following rights:</p>
+<ul>
+<li><strong>Right of access (Art. 15 GDPR):</strong> You can access all your game data at any time by navigating to the settings and progress screens within the application.</li>
+<li><strong>Right to rectification (Art. 16 GDPR):</strong> You can modify your preferences (language, audio, vibration) directly from the application settings.</li>
+<li><strong>Right to erasure (Art. 17 GDPR):</strong> You can delete all your data by uninstalling the application or clearing the application data from Android settings (Settings → Apps → Cheese Runner → Clear data).</li>
+<li><strong>Right to data portability (Art. 20 GDPR):</strong> You can export the <code>save.cfg</code> file by copying it from the application data directory if your device allows it.</li>
+<li><strong>Right to object (Art. 21 GDPR):</strong> Since we do not process personal data, this right is not applicable in practice.</li>
+<li><strong>Right to withdraw consent:</strong> No consent is required since we do not process personal data.</li>
+</ul>
+<p><strong>Legal basis for processing (Art. 6 GDPR):</strong> The processing of local game data is based on the controller's legitimate interest (Art. 6.1.f) to provide essential game functionality, and on the performance of the service contract (Art. 6.1.b) by saving game progress.</p>
+
+<h3>8.2 Rights under the CCPA (California Consumer Privacy Act)</h3>
+<p>If you reside in California, you have the following rights under the CCPA:</p>
+<ul>
+<li><strong>Right to know:</strong> This section constitutes our notice of the categories of data collected. As detailed above, we do not collect personally identifiable information.</li>
+<li><strong>Right to delete:</strong> You can delete your data at any time by uninstalling the application or clearing data from Android settings.</li>
+<li><strong>Right to opt out of sale:</strong> <strong>We do not sell personal information.</strong> This right is not applicable since we have never sold and will never sell personal data.</li>
+<li><strong>Right to non-discrimination:</strong> We do not discriminate against any user for exercising their privacy rights.</li>
+</ul>
+
+<p><strong>Categories of personal information collected in the last 12 months (CCPA §1798.100):</strong></p>
+
+<table>
+<thead><tr><th>Category</th><th>Collected</th><th>Shared</th><th>Sold</th></tr></thead>
+<tbody>
+<tr><td>Identifiers</td><td>No</td><td>No</td><td>No</td></tr>
+<tr><td>Commercial data</td><td>No</td><td>No</td><td>No</td></tr>
+<tr><td>Financial data</td><td>No</td><td>No</td><td>No</td></tr>
+<tr><td>Internet or other network activity data</td><td>No</td><td>No</td><td>No</td></tr>
+<tr><td>Geolocation data</td><td>No</td><td>No</td><td>No</td></tr>
+<tr><td>Professional data</td><td>No</td><td>No</td><td>No</td></tr>
+<tr><td>Education data</td><td>No</td><td>No</td><td>No</td></tr>
+<tr><td>Inferences drawn</td><td>No</td><td>No</td><td>No</td></tr>
+<tr><td>Biometric data</td><td>No</td><td>No</td><td>No</td></tr>
+<tr><td>Data of minors under 16</td><td>No</td><td>No</td><td>No</td></tr>
+</tbody>
+</table>
+
+<h2>9. Security</h2>
+<p>Although Cheese Runner does not collect personal data, we take measures to protect the game data stored on your device:</p>
+<ul>
+<li>Data is stored in Android's private application space, which is not accessible to other applications (on non-rooted devices).</li>
+<li>An automatic local backup is maintained to prevent data loss from save file corruption.</li>
+<li>No data is transmitted over the internet, eliminating interception risks.</li>
+</ul>
+
+<h2>10. Changes to This Policy</h2>
+<p>We may update this privacy policy periodically. Any changes will be reflected in the "Last updated" date at the top of the document. If we make material changes, we will notify you through an application update on Google Play Store.</p>
+<p>We recommend reviewing this policy periodically to stay informed about how we protect your information.</p>
+
+<h2>11. Contact</h2>
+<p>If you have questions, comments, or concerns about this privacy policy or how your data is handled, you can contact us at:</p>
+<p><strong>Email:</strong> <a href="mailto:diegodelgado2578@gmail.com">diegodelgado2578@gmail.com</a><br>
+<strong>Google Play contact form:</strong> Available on the application's Google Play Store listing</p>
+<p>To exercise your privacy rights (access, deletion, rectification), you can:</p>
+<ol>
+<li>Manage your data directly from the application (settings, progress).</li>
+<li>Delete all your data from Android settings: <strong>Settings → Apps → Cheese Runner → Clear data</strong>.</li>
+<li>Contact us by email for any additional inquiries.</li>
+</ol>
+<p>We will endeavor to respond to any request within the timeframes established by applicable legislation (30 days under GDPR, 45 days under CCPA).</p>
+
+</div>
+
+<div class="footer">
+    <p>© 2025 Genia — Cheese Runner. All rights reserved.</p>
+    <p>com.genia.cheeserunner</p>
+</div>
+
+</body>
+</html>
